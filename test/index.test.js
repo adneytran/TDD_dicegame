@@ -96,7 +96,7 @@ describe("Determining roll types", () => {
 
     it("full house wins over a 3 of a kind if it is a tie", () => {
       dice = [1, 1, 6, 6, 6];
-      expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.threeOfAKind);
+      expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.fullHouse);
     });
   });
 });

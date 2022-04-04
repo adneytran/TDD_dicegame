@@ -55,4 +55,9 @@ describe("Determining roll types", () => {
       ROLL_TYPES.threeOfAKind
     );
   });
+
+  it("should be chance when the dice roll doesn't qualify for the other roll types", () => {
+    dice = [1, 1, 2, 3, 5];
+    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.chance);
+  });
 });

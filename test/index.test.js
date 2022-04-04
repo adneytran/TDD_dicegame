@@ -90,7 +90,12 @@ describe("Determining roll types", () => {
     let dice;
 
     it("a high 3 of a kind should beat a full house", () => {
-      dice = [6, 6, 6, 5, 5];
+      dice = [5, 5, 5, 6, 6];
+      expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.threeOfAKind);
+    });
+
+    it("full house wins over a 3 of a kind if it is a tie", () => {
+      dice = [1, 1, 6, 6, 6];
       expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.threeOfAKind);
     });
   });

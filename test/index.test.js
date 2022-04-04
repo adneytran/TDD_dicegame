@@ -10,7 +10,7 @@ describe("Determining roll types", () => {
     expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.allSame);
   });
 
-  it("should be a straight if there are five consecutive numbers", () => {
+  it("should be a straight if there are five consecutive, unique numbers", () => {
     dice = [1, 2, 3, 4, 5];
     expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.straight);
 

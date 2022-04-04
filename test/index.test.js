@@ -20,4 +20,15 @@ describe("Determining roll types", () => {
     dice = [1, 2, 3, 5, 6];
     expect(findBestRollType(shuffle(dice))).not.toEqual(ROLL_TYPES.straight);
   });
+
+  it("should be a small straight if there are four consecutive, unique numbers", () => {
+    dice = [1, 2, 3, 4, 6];
+    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.smallStraight);
+
+    dice = [2, 3, 4, 4, 5];
+    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.smallStraight);
+
+    dice = [3, 4, 5, 6, 6];
+    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.smallStraight);
+  });
 });

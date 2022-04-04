@@ -46,6 +46,8 @@ export const findBestRollType = (dice) => {
   if (diceValues.length === 3 && diceCount.get(middleDie) === 3) {
     return ROLL_TYPES.threeOfAKind;
   }
+
+  return ROLL_TYPES.chance;
 };
 
 /**

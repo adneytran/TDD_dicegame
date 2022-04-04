@@ -1,4 +1,4 @@
-import { findBestRollType } from "../src/index";
+import { findBestRollType } from "../src/pokerDice";
 import { ROLL_TYPES, ERROR_MESSAGE } from "../src/constants";
 import shuffle from "../src/utils/shuffle";
 

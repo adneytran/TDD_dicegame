@@ -11,7 +11,8 @@ main();
  * @returns {string} the highest roll type
  */
 export const findBestRollType = (dice) => {
-  const [diceCount, diceValues] = initializeCounts(dice);
+  const diceCount = initializeCounts(dice);
+  const diceValues = Array.from(diceCount.keys()).sort((a, b) => a - b);
 
   if (diceValues.length === 1) {
     return ROLL_TYPES.allSame;
@@ -35,12 +36,10 @@ export const findBestRollType = (dice) => {
 
 /**
  * @param {number[]} dice - array of numbers representing dice
- * @returns {[Map<number,number>, Array<number>]} a map that stores the number of occurances of each die value
- * 																							  and a sorted array containing the unique die values
+ * @returns {Map<number,number>} a map that stores the number of occurances of each die value
  */
 const initializeCounts = (dice) => {
   const diceCount = new Map();
-  const diceSet = new Set();
 
   dice.forEach((die) => {
     const count = diceCount.get(die);
@@ -49,8 +48,6 @@ const initializeCounts = (dice) => {
     } else {
       diceCount.set(die, count + 1);
     }
-    diceSet.add(die);
   });
-  const diceValues = [...diceSet].sort((a, b) => a - b);
-  return [diceCount, diceValues];
+  return diceCount;
 };

@@ -27,19 +27,25 @@ const findBestRollType = (dice) => {
   if (diceValues.length === 1) {
     return ROLL_TYPES.allSame;
   }
-  if (diceValues.length === 5) {
-    if (diceValues[diceValues.length - 1] - diceValues[0] === 4) {
-      return ROLL_TYPES.straight;
+
+  let counter = 1;
+  let maxConsecutive = 1;
+  for (let i = 0; i < diceValues.length - 1; i++) {
+    if (diceValues[i + 1] - diceValues[i] === 1) {
+      counter++;
+      maxConsecutive = Math.max(maxConsecutive, counter);
     } else {
-      return ROLL_TYPES.smallStraight;
+      counter = 1;
     }
   }
-  if (
-    diceValues.length === 4 &&
-    diceValues[diceValues.length - 1] - diceValues[0] === 3
-  ) {
+
+  if (maxConsecutive === 5) {
+    return ROLL_TYPES.straight;
+  }
+  if (maxConsecutive === 4) {
     return ROLL_TYPES.smallStraight;
   }
+
   if (diceValues.length === 2) {
     const dieValue = diceValues[0];
     if (diceCount.get(dieValue) === 2 || diceCount.get(dieValue) === 3) {

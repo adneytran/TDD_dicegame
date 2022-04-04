@@ -31,4 +31,9 @@ describe("Determining roll types", () => {
     dice = [3, 4, 5, 6, 6];
     expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.smallStraight);
   });
+
+  it("should be a full house if there are trips and a pair", () => {
+    dice = [1, 1, 1, 2, 2];
+    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.fullHouse);
+  });
 });

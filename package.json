@@ -1,0 +1,19 @@
+{
+  "name": "dice",
+  "version": "1.0.0",
+  "description": "poker dice game",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest --watchAll --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1"
+  }
+}

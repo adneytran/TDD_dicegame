@@ -37,6 +37,8 @@ export const findBestRollType = (dice) => {
     const dieValue = diceValues[0];
     if (diceCount.get(dieValue) === 2 || diceCount.get(dieValue) === 3) {
       return ROLL_TYPES.fullHouse;
+    } else {
+      return ROLL_TYPES.fourOfAKind;
     }
   }
 };

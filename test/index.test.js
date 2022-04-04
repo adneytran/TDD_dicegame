@@ -36,4 +36,9 @@ describe("Determining roll types", () => {
     dice = [1, 1, 1, 2, 2];
     expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.fullHouse);
   });
+
+  it("should be a 4 of a kind if there are four instances of a single value", () => {
+    dice = [1, 1, 1, 1, 2];
+    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.fourOfAKind);
+  });
 });

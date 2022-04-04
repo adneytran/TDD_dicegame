@@ -28,7 +28,7 @@ export const findBestRollType = (dice) => {
 
   if (
     diceValues.length === 4 &&
-    diceValues[diceValues.length - 1] - diceValues[0]
+    diceValues[diceValues.length - 1] - diceValues[0] === 3
   ) {
     return ROLL_TYPES.smallStraight;
   }

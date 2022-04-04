@@ -8,17 +8,19 @@ describe("Checking validity of arguments", () => {
   const badValueArray = [1, 1, 1, 1, 7];
 
   it("should throw an error if an element of the dice array is non-numeric", () => {
-    expect(findBestRollType(badTypeArray)).toThrow(ERROR_MESSAGE.invalidType);
+    expect(() => findBestRollType(badTypeArray)).toThrow(
+      ERROR_MESSAGE.invalidType
+    );
   });
 
   it("should throw an error if the array has a length other than five", () => {
-    expect(findBestRollType(badLengthArray)).toThrow(
+    expect(() => findBestRollType(badLengthArray)).toThrow(
       ERROR_MESSAGE.invalidArrayLength
     );
   });
 
   it("should throw an error if an element of the dice array is not between 1 and 6", () => {
-    expect(findBestRollType(badValueArray)).toThrow(
+    expect(() => findBestRollType(badValueArray)).toThrow(
       ERROR_MESSAGE.invalidDieValue
     );
   });

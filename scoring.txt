@@ -1,0 +1,27 @@
+Scoring Rules
+
+Scoring the roll is as follows:
+
+All Same: 50 points
+
+Straight (five consecutive numbers): 40 points
+
+Small straight (four consecutive numbers): 30 points
+
+Full House (3 of kind + 2 of a kind): 25 points
+
+4 of a Kind: sum of all dice + 10 point bonus
+
+Three of a Kind: sum of all dice + 5 point bonus
+
+Chance (any combination): sum of all dice
+
+In the event of a tie, the result should be based on the priority in the list above.
+
+Examples:
+
+Player rolls 2, 2, 3, 4, 6. The best roll type in this case would be Chance.
+
+Player rolls 1, 2, 3, 3, 3. The best roll type in this case would be 3 of a Kind.
+
+Player rolls 2, 3, 4, 5, 6. The best roll type in this case would be Straight.

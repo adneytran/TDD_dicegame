@@ -45,6 +45,12 @@ describe("Determining roll types", () => {
   it(`should be a 3 of a kind if there are three instances of a single value, 
 	with the other two values non-matching`, () => {
     dice = [1, 1, 1, 5, 3];
-    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.fourOfAKind);
+    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.threeOfAKind);
+
+    dice = [2, 1, 1, 1, 3];
+    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.threeOfAKind);
+
+    dice = [2, 3, 1, 1, 1];
+    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.threeOfAKind);
   });
 });

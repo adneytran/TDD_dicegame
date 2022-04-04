@@ -12,18 +12,21 @@ main();
  */
 export const findBestRollType = (dice) => {
   const [diceCount, diceValues] = initializeCounts(dice);
-  if (diceCount.size === 1) {
+
+  if (diceValues.length === 1) {
     return ROLL_TYPES.allSame;
   }
-  if (diceCount.size === 5) {
+
+  if (diceValues.length === 5) {
     if (diceValues[diceValues.length - 1] - diceValues[0] === 4) {
       return ROLL_TYPES.straight;
     } else {
       return ROLL_TYPES.smallStraight;
     }
   }
+
   if (
-    diceCount.size === 4 &&
+    diceValues.length === 4 &&
     diceValues[diceValues.length - 1] - diceValues[0]
   ) {
     return ROLL_TYPES.smallStraight;

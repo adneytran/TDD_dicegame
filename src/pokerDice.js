@@ -4,7 +4,7 @@ import { ROLL_TYPES, ERROR_MESSAGE } from "./constants.js";
  * @param {number[]} dice - array of numbers representing dice
  * @returns {string} the highest roll type
  */
-export const findBestRollType = (dice) => {
+const findBestRollType = (dice) => {
   try {
     if (dice.length !== 5) {
       throw ERROR_MESSAGE.invalidArrayLength;
@@ -86,3 +86,5 @@ const threeOfKindBeatsFH = (dice) => {
   });
   return sum + 5 > 25;
 };
+
+export default findBestRollType;

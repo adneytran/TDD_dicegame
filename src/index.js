@@ -41,6 +41,11 @@ export const findBestRollType = (dice) => {
       return ROLL_TYPES.fourOfAKind;
     }
   }
+
+  const middleDie = dice.sort((a, b) => a - b)[2];
+  if (diceValues.length === 3 && diceCount.get(middleDie) === 3) {
+    return ROLL_TYPES.threeOfAKind;
+  }
 };
 
 /**

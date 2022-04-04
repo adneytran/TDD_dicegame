@@ -50,7 +50,9 @@ describe("Determining roll types", () => {
     dice = [2, 1, 1, 1, 3];
     expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.threeOfAKind);
 
-    dice = [2, 3, 1, 1, 1];
-    expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.threeOfAKind);
+    dice = [2, 3, 1, 2, 3];
+    expect(findBestRollType(shuffle(dice))).not.toEqual(
+      ROLL_TYPES.threeOfAKind
+    );
   });
 });

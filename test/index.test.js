@@ -84,4 +84,14 @@ describe("Determining roll types", () => {
     dice = [1, 1, 2, 3, 5];
     expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.chance);
   });
+
+  describe(`edge cases where lower priority roll types score 
+	equal or more than higher priority types`, () => {
+    let dice;
+
+    it("a high 3 of a kind should beat a full house", () => {
+      dice = [6, 6, 6, 5, 5];
+      expect(findBestRollType(shuffle(dice))).toEqual(ROLL_TYPES.threeOfAKind);
+    });
+  });
 });

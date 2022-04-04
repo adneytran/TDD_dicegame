@@ -1,4 +1,4 @@
-import { ROLL_TYPES } from "./constants";
+import { ROLL_TYPES, ERROR_MESSAGE } from "./constants.js";
 
 const main = () => {
   console.log("hi mom");
@@ -11,13 +11,26 @@ main();
  * @returns {string} the highest roll type
  */
 export const findBestRollType = (dice) => {
+  try {
+    if (dice.length !== 5) {
+      throw ERROR_MESSAGE.invalidArrayLength;
+    }
+    dice.forEach((die) => {
+      if (isNaN(die)) {
+        throw ERROR_MESSAGE.invalidType;
+      }
+      if (die < 1 || die > 6) {
+        throw ERROR_MESSAGE.invalidDieValue;
+      }
+    });
+  } catch (e) {
+    throw new Error(e);
+  }
   const diceCount = initializeCounts(dice);
   const diceValues = Array.from(diceCount.keys()).sort((a, b) => a - b);
-
   if (diceValues.length === 1) {
     return ROLL_TYPES.allSame;
   }
-
   if (diceValues.length === 5) {
     if (diceValues[diceValues.length - 1] - diceValues[0] === 4) {
       return ROLL_TYPES.straight;
@@ -25,14 +38,12 @@ export const findBestRollType = (dice) => {
       return ROLL_TYPES.smallStraight;
     }
   }
-
   if (
     diceValues.length === 4 &&
     diceValues[diceValues.length - 1] - diceValues[0] === 3
   ) {
     return ROLL_TYPES.smallStraight;
   }
-
   if (diceValues.length === 2) {
     const dieValue = diceValues[0];
     if (diceCount.get(dieValue) === 2 || diceCount.get(dieValue) === 3) {
@@ -41,12 +52,10 @@ export const findBestRollType = (dice) => {
       return ROLL_TYPES.fourOfAKind;
     }
   }
-
   const middleDie = dice.sort((a, b) => a - b)[2];
   if (diceValues.length === 3 && diceCount.get(middleDie) === 3) {
     return ROLL_TYPES.threeOfAKind;
   }
-
   return ROLL_TYPES.chance;
 };
 
